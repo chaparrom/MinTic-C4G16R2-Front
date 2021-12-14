@@ -17,7 +17,7 @@ function productQry(){
     document.getElementById('botonAdd').disabled = false;
     
     $.ajax({
-        url:'http://132.226.250.48:8082/api/cookware/all',
+        url:'http://132.226.250.48:8083/api/cookware/all',
         type:'GET',
         datatype:'JSON',
         success:function(respuesta){
@@ -93,7 +93,7 @@ function productAdd() {
                 let dataToSend = JSON.stringify(dataJSON);
 console.log(dataToSend)
                 $.ajax({
-                    url:"http://132.226.250.48:8082/api/cookware/new",
+                    url:"http://132.226.250.48:8083/api/cookware/new",
                     type:"POST",
                     data:dataToSend,
                     contentType:"application/JSON",
@@ -118,7 +118,7 @@ console.log(dataToSend)
 function productVal(){
 
     $.ajax({
-        url:"http://132.226.250.48:8082/api/cookware/" + $("#reference").val(),
+        url:"http://132.226.250.48:8083/api/cookware/" + $("#reference").val(),
         type:"GET",
         success:function(respuesta){
 
@@ -132,7 +132,7 @@ function productVal(){
 function productDel(reference){
 
     $.ajax({
-        url:"http://132.226.250.48:8082/api/cookware/"+reference,
+        url:"http://132.226.250.48:8083/api/cookware/"+reference,
         type:"DELETE",
         success:function(respuesta){
             alert("Producto eliminado satisfactoriamente")
@@ -145,7 +145,7 @@ function productDel(reference){
 function productSel(reference){
 
     $.ajax({
-        url:"http://132.226.250.48:8082/api/cookware/"+reference,
+        url:"http://132.226.250.48:8083/api/cookware/"+reference,
         type:"GET",
         success:function(respuesta){
             console.log(respuesta)
@@ -198,7 +198,7 @@ function productUpd() {
                 let dataToSend = JSON.stringify(dataJSON);
 
                 $.ajax({
-                    url:"http://132.226.250.48:8082/api/cookware/update",
+                    url:"http://132.226.250.48:8083/api/cookware/update",
                     type:"PUT",
                     data:dataToSend,
                     contentType:"application/JSON",
@@ -217,3 +217,13 @@ function productUpd() {
         alert("Por favor digitar toda la información solicitada");            
     }
 }  
+
+$(document).ready(function () {
+        
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    if (user === null | user.type != "ADM") {
+        location.href="index.html";
+    } 
+    productQry();
+});
+

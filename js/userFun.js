@@ -16,7 +16,7 @@ function userQry(){
 
     
     $.ajax({
-        url:'http://132.226.250.48:8082/api/user/all',
+        url:'http://132.226.250.48:8083/api/user/all',
         type:'GET',
         datatype:'JSON',
         success:function(respuesta){
@@ -90,7 +90,7 @@ function userAdd() {
                 let dataToSend = JSON.stringify(dataJSON);
 
                 $.ajax({
-                    url:"http://132.226.250.48:8082/api/user/new",
+                    url:"http://132.226.250.48:8083/api/user/new",
                     type:"POST",
                     data:dataToSend,
                     contentType:"application/JSON",
@@ -113,7 +113,7 @@ function userAdd() {
 function userVal(){
 
     $.ajax({
-        url:"http://132.226.250.48:8082/api/user/emailexist/" + $("#email").val(),
+        url:"http://132.226.250.48:8083/api/user/emailexist/" + $("#email").val(),
         type:"GET",
         success:function(respuesta){
 
@@ -128,7 +128,7 @@ function userVal(){
 function userDel(id){
 
     $.ajax({
-        url:"http://132.226.250.48:8082/api/user/"+id,
+        url:"http://132.226.250.48:8083/api/user/"+id,
         type:"DELETE",
         success:function(respuesta){
             userQry();
@@ -140,7 +140,7 @@ function userDel(id){
 function userSel(email, password){
     console.log(email);
     $.ajax({
-        url:"http://132.226.250.48:8082/api/user/"+email + "/" + password,
+        url:"http://132.226.250.48:8083/api/user/"+email + "/" + password,
         type:"GET",
 
         success:function(respuesta){
@@ -183,7 +183,7 @@ function userUpd() {
                 let dataToSend = JSON.stringify(dataJSON);
 
                 $.ajax({
-                    url:"http://132.226.250.48:8082/api/user/update",
+                    url:"http://132.226.250.48:8083/api/user/update",
                     type:"PUT",
                     data:dataToSend,
                     contentType:"application/JSON",
@@ -202,3 +202,11 @@ function userUpd() {
         alert("Por favor digitar toda la información solicitada");            
     }
 }  
+
+$(document).ready(function () {    
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    if (user === null | user.type != "ADM") {
+        location.href="index.html";
+    } 
+    userQry();
+});

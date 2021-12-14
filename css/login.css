@@ -2,8 +2,14 @@ body {
     font-family: "Lato", sans-serif;
 }
 
+.row {
+    padding-top: 1px;
+}
 
-
+.form-control {
+    padding-top: 2px;
+    size: 5px;
+}
 .main-head{
     height: 150px;
     background: #FFF;
@@ -21,6 +27,15 @@ body {
     
 }
 
+.numbers {
+    width: 100px;
+    text-align: center;
+}
+
+.form-control{
+    font-size:medium;
+    shape-margin: 10px;
+}
 
 .main {
     padding: 0px 10px;

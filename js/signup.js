@@ -21,7 +21,7 @@ function signup() {
                 let dataToSend = JSON.stringify(dataJSON);
 
                 $.ajax({
-                    url:"http://132.226.250.48:8082/api/user/new",
+                    url:"http://132.226.250.48:8083/api/user/new",
                     type:"POST",
                     data:dataToSend,
                     contentType:"application/JSON",
@@ -48,7 +48,7 @@ function signup() {
 function userVal(email){
 
     $.ajax({
-        url:"http://132.226.250.48:8082/api/user/emailexist/" + email,
+        url:"http://132.226.250.48:8083/api/user/emailexist/" + email,
         type:"GET",
         success:function(respuesta){
 
